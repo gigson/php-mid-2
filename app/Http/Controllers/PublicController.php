@@ -78,7 +78,12 @@ class PublicController extends Controller
     {
         $result = [];
         if (Input::get('search-text')) {
-            $result = Post::with(["tags", "user", "category"])->where('title', 'like', '%' . Input::get('search-text') . '%')->get();
+            if (Input::get('search-place') == "body") {
+                $result = Post::with(["tags", "user", "category"])->where('body', 'like', '%' . Input::get('search-text') . '%')->get();
+
+            } else {
+                $result = Post::with(["tags", "user", "category"])->where('title', 'like', '%' . Input::get('search-text') . '%')->get();
+            }
         }
 
         return view('public.search', [

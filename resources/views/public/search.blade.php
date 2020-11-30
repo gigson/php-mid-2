@@ -74,8 +74,16 @@
                 @csrf
                 <label style="font-size: 1.1em" for="search-text">საძიებო ტექსტი:</label><br>
                 <input style="margin-top: 10px" type="text" name="search-text">
+                <input style="margin-left: 5px" type="submit" value="ძებნა"><br>
 
-                <input style="margin-left: 5px" type="submit" value="Search">
+                <div style="margin-top: 5px;">
+                    <input type="radio" name="search-place" value="title" checked>
+                    <label>სათაური</label>
+
+                    <input type="radio" name="search-place" value="body">
+                    <label>ციტატა</label>
+                </div>
+
             </form>
         </div>
     </div>
