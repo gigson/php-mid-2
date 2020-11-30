@@ -93,12 +93,12 @@
              data-width=""></div>
     </div>
 
-    <div style="margin-left: 10px; margin-bottom: 50px; margin-top: 50px">
+    <div style="margin-left: 10px; margin-top: 50px">
         <h2>მსგავსი</h2>
         <hr style="border-color: red">
     </div>
 
-    <div class="flex-container">
+    <div class="flex-container" style="margin-bottom: 100px">
         @foreach($posts as $postSimilar)
             @if($loop->index < 10 && $postSimilar->id!=$post->id)
 
