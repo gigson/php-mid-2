@@ -24,7 +24,7 @@
             <input type="text" name="title"><br>
 
             <label for="body">Body:</label><br>
-            <input type="text" name="body"><br>
+            <textarea cols="50" rows="10" type="text" name="body"></textarea><br>
 
             <label for="image">Image:</label><br>
             <input type="file" name="image"><br>

@@ -10,7 +10,7 @@
             <input type="text" name="title" value="{{$post->title}}"><br>
 
             <label for="body">Body:</label><br>
-            <input type="text" name="body" value="{{$post->body}}"><br>
+            <textarea cols="50" rows="10" type="text" name="body">{{$post->body}}</textarea><br>
 
             <label for="image">Image:</label><br>
             <img src="{{asset('images')."/".$post->image}}" style="max-height: 200px"><br>

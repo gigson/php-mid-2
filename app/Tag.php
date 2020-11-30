@@ -11,8 +11,8 @@ class Tag extends Model
         'post_id'
     ];
 
-    public function tags(){
-        return $this->belongsTo("App\Post");
+    public function posts(){
+        return $this->belongsTo("App\Post", "post_id");
     }
 
 }

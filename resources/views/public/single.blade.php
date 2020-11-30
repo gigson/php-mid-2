@@ -63,7 +63,13 @@
 
 <div class="container">
     <div>
-        <div><span>{{$post->category->name}}</span></div>
+        <div><span style="font-size: 1.1em">{{$post->category->name}}</span></div>
+        <div>
+            @foreach($post->tags as $tag)
+                <span>&nbsp</span>
+                <span style="color: #6c7781"><i>{{$tag->name}}</i></span>
+            @endforeach
+        </div>
         <hr>
         <div style="margin-top: 15px; border-left: 4px solid #ec1c24; padding-left: 15px">
             <h2>{{$post->title}}</h2>

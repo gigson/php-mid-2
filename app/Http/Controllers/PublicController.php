@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use App\Tag;
 use Illuminate\Support\Facades\Input;
 
 class PublicController extends Controller
@@ -61,10 +62,26 @@ class PublicController extends Controller
     public function show($postId)
     {
         $post = Post::with(["tags", "user", "category"])->where(["id" => $postId])->first();
+
+        $tagNames = [];
+        foreach ($post->tags as $tag) {
+            array_push($tagNames, $tag->name);
+        }
+
+        $sameTagPosts = Tag::with(["posts"])->whereIn("name", $tagNames)->get();
+
+        $posts = [];
+        foreach ($sameTagPosts as $tag) {
+            array_push($posts, $tag->posts);
+        }
+
+
+
         return view('public.single', [
             "categories" => Category::get(),
             "post" => $post,
-            "posts" => Post::with(["tags", "user", "category"])->where(["category_id" => $post->category_id])->get()
+            "posts" => $posts,
+            "sameTagPosts" => $sameTagPosts
         ]);
     }
 
