@@ -43,6 +43,12 @@
             <input type="text" name="id" value="{{$post->id}}" hidden><br>
             <input type="submit" value="Save Post">
         </form>
+
+        <form action="{{ route('deletePost') }}" method="post">
+            @csrf
+            <input type="text" name="id" value="{{$post->id}}" hidden>
+            <input type="submit" value="Delete">
+        </form>
     </div>
 
     <script>

@@ -165,11 +165,18 @@ class HomeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
     public function destroyPost(Request $request)
     {
-        //
+        Post::where([
+            ["id", $request->input("id")],
+        ])->delete();
+
+        return view('admin.post.view', [
+            "categories" => Category::get(),
+            "posts" => Post::with(["user", "category"])->get()
+        ]);
     }
 
 
