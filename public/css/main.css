@@ -42,8 +42,9 @@ html, body {
 header a {
     color: white;
     text-decoration: none;
-    margin-right: 10px;
+    margin-right: 20px;
     height: 100%;
+    font-size: 18px;
 }
 
 .dropdown {
@@ -64,6 +65,7 @@ header a {
     top: 80px;
     z-index: 10;
     display: block;
+    padding-left: 10px;
 }
 
 

@@ -94,7 +94,7 @@
 
 
     <div class="flex-container">
-        @foreach($postsHot as $post)
+        @foreach($posts as $post)
             @if($loop->index < 10)
 
                 <div class="flex-content">
