@@ -71,7 +71,6 @@
     <div class="flex-container">
         <div class="flex-content">
             <form action="">
-                @csrf
                 <label style="font-size: 1.1em" for="search-text">საძიებო ტექსტი:</label><br>
                 <input style="margin-top: 10px" type="text" name="search-text">
                 <input style="margin-left: 5px" type="submit" value="ძებნა"><br>
