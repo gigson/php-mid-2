@@ -8,19 +8,19 @@
 
     <!-- Fonts -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('css/pm.css') }}" rel="stylesheet">--}}
+{{--    <link href="{{ asset('css/pm2.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Styles -->
+<!-- Styles -->
     <style>
 
+
     </style>
-
-
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0"
-            nonce="YKYloL0Q"></script>
 </head>
 <body>
+
 <header>
     <nav class="nav-bar">
         <div class="nav-bar-logo">
@@ -61,58 +61,50 @@
 </header>
 
 
-<div class="container">
-    <div>
-        <div><span>{{$post->category->name}}</span></div>
-        <hr>
-        <div style="margin-top: 15px; border-left: 4px solid #ec1c24; padding-left: 15px">
-            <h2>{{$post->title}}</h2>
-        </div>
-        <div>
-            <img src="{{asset('images')."/".$post->image}}" style="max-height: 500px"><br>
-        </div>
-        <div>
-            <h4>{{$post->body}}</h4>
-        </div>
+<div class="container" style="margin-right: 50px; margin-left: 50px">
 
-    </div>
-
-    <div style="margin-left: 10px; margin-bottom: 50px; margin-top: 50px">
-        <h2>კომენტარები</h2>
-        <hr style="border-color: red">
-    </div>
-
-    <div>
-        <div class="fb-comments" data-href="http://127.0.0.1:8000/mid-2/post/{{$post->id}}" data-numposts="5"
-             data-width=""></div>
-    </div>
-
-    <div style="margin-left: 10px; margin-bottom: 50px; margin-top: 50px">
-        <h2>მსგავსი</h2>
+    <div style="margin-left: 30px; margin-right: 50px; margin-top: 50px">
+        <h2>ძებნა</h2>
         <hr style="border-color: red">
     </div>
 
     <div class="flex-container">
-        @foreach($posts as $postSimilar)
-            @if($loop->index < 10 && $postSimilar->id!=$post->id)
+        <div class="flex-content">
+            <form action="">
+                @csrf
+                <label style="font-size: 1.1em" for="search-text">საძიებო ტექსტი:</label><br>
+                <input style="margin-top: 10px" type="text" name="search-text">
 
+                <input style="margin-left: 5px" type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+
+
+    @if($result!= null && !$result->isEmpty())
+        <div style="margin-left: 30px; margin-right: 50px; margin-top: 50px">
+            <h2>შედეგი</h2>
+            <hr style="border-color: red">
+        </div>
+
+        <div class="flex-container">
+            @foreach($result as $post)
                 <div class="flex-content">
-                    <a href="{{route('single', ["postId"=>$postSimilar->id])}}">
+                    <a href="{{route('single', ["postId"=>$post->id])}}">
                         <img style='height: 100%; width: 100%; object-fit: contain'
-                             src="{{asset('images')."/".$postSimilar->image}}">
+                             src="{{asset('images')."/".$post->image}}">
                         <div>
-                            {{$postSimilar->title}}
+                            {{$post->title}}
                         </div>
                     </a>
                 </div>
+            @endforeach
+        </div>
 
-            @endif
-        @endforeach
-    </div>
+    @endif
+
 
 </div>
 
-
-<div id="fb-root"></div>
 </body>
 </html>

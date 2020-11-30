@@ -8,6 +8,8 @@
 
     <!-- Fonts -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {{--    <link href="{{ asset('css/pm.css') }}" rel="stylesheet">--}}
 {{--    <link href="{{ asset('css/pm2.css') }}" rel="stylesheet">--}}
 
@@ -23,7 +25,7 @@
     <nav class="nav-bar">
         <div class="nav-bar-logo">
             <a href="/">
-            <img src="{{asset('images')."/pm-logo.png"}}" style="height: 80px; width: 80px">
+                <img src="{{asset('images')."/pm-logo.png"}}" style="height: 80px; width: 80px">
             </a>
         </div>
         <div class="nav-bar-start">
@@ -49,7 +51,11 @@
             @endforeach
         </div>
         <div class="nav-bar-end">
-            <button type="button"> search</button>
+            <div>
+                <a href="{{route('search')}}">
+                    <i class="fa fa-search" style="font-size: 30px; margin-right: 5px"></i>
+                </a>
+            </div>
         </div>
     </nav>
 </header>

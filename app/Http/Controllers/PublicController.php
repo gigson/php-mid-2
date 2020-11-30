@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use Illuminate\Support\Facades\Input;
 
 class PublicController extends Controller
 {
@@ -72,11 +73,18 @@ class PublicController extends Controller
      * Display the specified resource.
      *
      * @param $postId
-     * @return void
      */
     public function search()
     {
-        //
+        $result = [];
+        if (Input::get('search-text')) {
+            $result = Post::with(["tags", "user", "category"])->where('title', 'like', '%' . Input::get('search-text') . '%')->get();
+        }
+
+        return view('public.search', [
+            "categories" => Category::get(),
+            "result" => $result
+        ]);
     }
 
 
